@@ -1,5 +1,23 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime;
 
-<h1>Hello, world!</h1>
+<h1>Hello, Prism</h1>
 
-Welcome to your new app.
+
+<pre class="line-numbers">
+<code class="language-csharp">
+    var hello = "";
+    </code>
+</pre>
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initPrism");
+        }
+    }
+
+}
